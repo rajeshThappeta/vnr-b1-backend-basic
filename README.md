@@ -40,3 +40,58 @@
                     npm install modeule-name
             b. Import and use
                     import ... from 'path of module'
+
+
+
+
+
+
+
+
+
+
+
+15-7-26
+-------
+ Test API with Postman
+ Adding local state to API
+ Middlewares
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ JS ----->Browser(JS runtime)
+    ----->Node.js(JS runtime) + Ecosystem(Library)
+
+
+
+
+
+
+
+# USER API
+
+        READ ALL USERS(GET)       GET http://localhost:4000/users
+        READ A USER BY ID(GET)    GET http://localhost:4000/users/id
+
+        CREATE NEW USER(POST)     POST http://localhost:4000/users
+
+        UPDATE A USER BY ID(PUT)  PUT http://localhost:4000/users/id
+
+        DELETE A USER BY ID(DELETE)  DELETE  http://localhost:4000/users/id

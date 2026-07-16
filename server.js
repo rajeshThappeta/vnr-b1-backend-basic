@@ -7,32 +7,78 @@ app.listen(4000,()=>console.log("server listening on port 4000"))
 
 // localhost:4000/
 
-// Define API(routes - handle reqs)
 
-    //route to handle GET req made by frontend
-    app.get('/',(req,res)=>{
-        res.json({message:"This res is from GET req handler"})
-    })
-    
-    //route to handle POST req made by frontend
-    app.post('/',(req,res)=>{
-         res.json({message:"This res is from POST req handler"})
-    })
+//add body parser middleware
+app.use(exp.json())
 
-    //route to handle PUT req made by Frontend
-    app.put('/',(req,res)=>{
-         res.json({message:"This res is from PUT req handler"})
-    })
-    
-    //route to handle DELETE req made by Frontend
-    app.delete('/',(req,res)=>{
-         res.json({message:"This res is from DELETE req handler"})
-    })
+//Local test data
+let users=[
+     {id:100,name:"ravi",age:21},
+     {id:200,name:"vasu",age:20}
+]
 
 
+// Define USER API(routes - handle reqs)
+
+   
+     // Read all Users
+     app.get("/users",(req,res)=>{
+          //return all users in res
+          res.json({message:"all users",payload:users})
+     })
+
+     // Read user by id
+     app.get("/users/:id",(req,res)=>{
+
+          //Read the id of user from req
+           let userId= Number(req.params.id)
+          //Find user with that id
+          let result=users.find(userObj=>userObj.id===userId)
+          //if user not found
+          if(result==undefined){
+               res.json({message:"User not found"})
+          }else{
+               res.json({message:"user found",payload:result})
+          }
+     })
+
+     // Create new user
+     app.post("/users",(req,res)=>{
+          //read user from req
+          let newUser=req.body;
+          //insert into users array
+          users.push(newUser)
+          //send res
+          res.json({message:"New user created"})
+     })
+
+     // Update user by id
+     app.put("/users/:id",(req,res)=>{
+          //get id of user
+          let userId=Number(req.params.id)
+          //get updated user from req body
+          let updatedUser=req.body;
+          updatedUser.id=userId;
+          //find index of user
+          let index=users.findIndex(userObj=>userObj.id===userId)
+          //if user not found
+          if(index===-1){
+               res.json({message:"User not found to update"})
+          }else{
+               //update user by index
+               users.splice(index,0,updatedUser)
+               res.json({message:"User modified"})
+          }
+
+     })
+
+     //Delete user by id
+     app.delete("/users/:id",(req,res)=>{
+
+     })
 
 
-
+     //PRODUCT API
 
 
 
