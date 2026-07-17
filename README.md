@@ -95,3 +95,29 @@
         UPDATE A USER BY ID(PUT)  PUT http://localhost:4000/users/id
 
         DELETE A USER BY ID(DELETE)  DELETE  http://localhost:4000/users/id
+
+
+
+
+
+
+
+
+
+# Application level Middleware
+        app.use(middleware)
+        Middleware executes for every incoming req
+
+# Route level Middleware
+        
+
+# Path level Middleware
+
+
+
+   Server.js --> Express app, USER API, PRODUCT API
+
+   Server.js --> Express app
+   userApi.js ---> USER API
+   productAPi.js--->PRODUCT API
+   
